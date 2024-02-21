@@ -3,6 +3,8 @@
 <%@ page import="java.util.List"%>
 <%@ page import="com.javaex.vo.PersonVo"%>
 <%
+
+
 List<PersonVo> personList = (List<PersonVo>) request.getAttribute("personList");
 %>
 

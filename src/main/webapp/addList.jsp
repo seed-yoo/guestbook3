@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="com.javaex.vo.PersonVo"%>
@@ -24,9 +24,10 @@ List<PersonVo> personList = (List<PersonVo>) request.getAttribute("personList");
 				<td colspan="4"><textarea cols="72" rows="5" name="content"></textarea></td>
 			</tr>
 			<tr>
-				<td colspan="4"><input type="hidden" name="action"
-					value="insert"> <br>
-					<button type="submit">등록</button></td>
+				<td colspan="4">
+				<input type="hidden" name="action" value="insert"> <br>
+					<button type="submit">등록</button>
+				</td>
 			</tr>
 		</table>
 	</form>
