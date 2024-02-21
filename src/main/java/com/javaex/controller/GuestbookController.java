@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javaex.dao.GuestbookDao;
+import com.javaex.util.WebUtil;
 import com.javaex.vo.PersonVo;
 
 @WebServlet("/gbc")
@@ -45,9 +46,7 @@ public class GuestbookController extends HttpServlet {
 			// 데이터담기 forward
 			request.setAttribute("personList", personList);
 
-			// jsp 한테 html 그리기 응답해라 ==> forward
-			RequestDispatcher rd = request.getRequestDispatcher("/addList.jsp");
-			rd.forward(request, response);
+			WebUtil.forward(request, response, "/addList.jsp");
 
 		} else if ("insert".equals(action)) {
 			System.out.println("insert:등록");
@@ -66,7 +65,7 @@ public class GuestbookController extends HttpServlet {
 			// db에 저장
 			phoneDao.personInsert(personVo);
 
-			response.sendRedirect("/guestbook3/gbc?action=addform");
+			WebUtil.redirect(request, response, "/guestbook3/gbc?action=addform");
 
 			/*
 			 * // db에서 전체 데이터 가져오기 List<PersonVo> personList = phoneDao.personSelect(); //
@@ -95,8 +94,7 @@ public class GuestbookController extends HttpServlet {
 			// db에 저장
 			phoneDao.personDelete(no, password);
 
-			response.sendRedirect("/guestbook3/gbc?action=addform");
-
+			WebUtil.redirect(request, response, "/guestbook3/gbc?action=addform");
 
 		} else if ("dform".equals(action)) {
 			System.out.println("dform:삭제폼");
@@ -115,9 +113,7 @@ public class GuestbookController extends HttpServlet {
 			// 데이터담기 forward
 			request.setAttribute("personList", personList);
 
-			// jsp 한테 html 그리기 응답해라 ==> forward
-			RequestDispatcher rd = request.getRequestDispatcher("/deleteForm.jsp");
-			rd.forward(request, response);
+			WebUtil.forward(request, response, "/deleteForm.jsp");
 
 		}
 
